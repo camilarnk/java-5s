@@ -43,7 +43,7 @@ public class VeiculoService {
         return Optional.empty();
     }
 
-    public void deleteByid(Long id) {
+    public void deleteById(Long id) {
         veiculoRepository.deleteById(id);
     }
 }

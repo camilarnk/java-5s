@@ -26,6 +26,7 @@ public class Veiculo {
     private BigDecimal preco;
 
     @Column(name = "status_veiculo")
+    @Enumerated(EnumType.STRING)
     private StatusVeiculo status;
 
     public Veiculo() {}

@@ -16,7 +16,7 @@ import java.util.Optional;
 public class VeiculoController {
 
     @Autowired
-    private VeiculoService veiculoService;
+    private VeiculoService veiculoService; 
 
     @PostMapping
     public ResponseEntity<Veiculo> create(@RequestBody Veiculo veiculo) {
@@ -36,11 +36,11 @@ public class VeiculoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Veiculo>> findById(@PathVariable Long id) {
+    public ResponseEntity<Veiculo> findById(@PathVariable Long id) {
         Optional<Veiculo> request = veiculoService.findById(id);
 
         if(request.isPresent()) {
-            return ResponseEntity.ok().body(request);
+            return ResponseEntity.ok(request.get());
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -62,7 +62,7 @@ public class VeiculoController {
         Optional<Veiculo> request = veiculoService.findById(id);
 
         if(request.isPresent()) {
-            veiculoService.deleteByid(id);
+            veiculoService.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
